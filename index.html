@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="autoRefresh" checked>
+                <label class="form-check-label" for="autoRefresh">Auto refresh</label>
+            </div>
+        </div>
+        <div class="col-sm">
+            <label for="refreshInterval">Seconds</label>
+            <input type="number" id="refreshInterval" value="10">
+        </div>
+        <div class="col-sm" id="date">3</div>
+    </div>
+</div>
+
+<body>
+<script>
+    let $autoRefresh = document.getElementById('autoRefresh')
+    let autoRefresh = $autoRefresh.checked
+
+    let $refreshInterval = document.getElementById('refreshInterval')
+    let refreshInterval = 1000 /*$refreshInterval.value * 1000*/
+
+    let $date = document.getElementById('date')
+    let date = new Date()
+
+    $autoRefresh.onchange = () => {
+        autoRefresh = !autoRefresh
+    }
+
+    $refreshInterval.onchange = () => {
+        refreshInterval = $refreshInterval.value * 1000
+    }
+
+    function loop() {
+        if (autoRefresh) {
+            date = new Date()
+            $date.innerHTML = date
+            // Add some custom divs to refresh
+            // In my project, i would fetch payments from database
+        }
+        window.setTimeout(loop, refreshInterval);
+    }
+
+    loop();
+</script>
+<script src="js/bootstrap.min.js"></script>
+</body>
+</html>
