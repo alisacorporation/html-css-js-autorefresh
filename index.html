@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>HTML :: CSS :: JS - Auto Refresh</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
-
-<div class="container">
+<body>
+    <div class="container">
     <div class="row">
         <div class="col-sm">
             <div class="form-check form-switch">
@@ -22,37 +22,7 @@
     </div>
 </div>
 
-<body>
-<script>
-    let $autoRefresh = document.getElementById('autoRefresh')
-    let autoRefresh = $autoRefresh.checked
-
-    let $refreshInterval = document.getElementById('refreshInterval')
-    let refreshInterval = 1000 /*$refreshInterval.value * 1000*/
-
-    let $date = document.getElementById('date')
-    let date = new Date()
-
-    $autoRefresh.onchange = () => {
-        autoRefresh = !autoRefresh
-    }
-
-    $refreshInterval.onchange = () => {
-        refreshInterval = $refreshInterval.value * 1000
-    }
-
-    function loop() {
-        if (autoRefresh) {
-            date = new Date()
-            $date.innerHTML = date
-            // Add some custom divs to refresh
-            // In my project, i would fetch payments from database
-        }
-        window.setTimeout(loop, refreshInterval);
-    }
-
-    loop();
-</script>
+<script src="js/app.js"></script>
 <script src="js/bootstrap.min.js"></script>
 </body>
 </html>
